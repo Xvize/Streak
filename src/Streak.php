@@ -21,18 +21,10 @@ class Streak
 {
     use StreakFunctions;
 
-    public function __call($method_name, $args){
-        $class = self::normalize($method_name);
-        return self::resolve($class);
-    }
+    protected $apikey;
 
-    public function resolve($class_name){
-        if(class_exists($class_name))
-            return new $class_name($this->requester);
-        throw new Exception("{$class_name} not found");
-    }
-
-    public function normalize($arg){
-        return __NAMESPACE__.'\\'.ucfirst($arg);
+    function __construct($apikey)
+    {
+        $this->apikey = $apikey;
     }
 }

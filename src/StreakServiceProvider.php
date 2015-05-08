@@ -32,8 +32,12 @@ class StreakServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('Streak', function () {
-            return new Streak();
+        $this->app->bind('streak_api', function ($app) {
+            return new Streak($app['config']['streak']['api_key']);
+        });
+
+        $this->app->bind('Xvize\Streak\Streak', function ($app) {
+            return new Streak($app['config']['streak']['api_key']);
         });
     }
     /**
