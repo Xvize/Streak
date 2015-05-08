@@ -18,10 +18,8 @@
     "phpunit/phpunit": "~4.0"
   },
   "autoload": {
-    "autoload": {
-      "psr-4": {
-        "Xvize\\Streak\\": "src"
-      }
+    "psr-4": {
+      "Xvize\\Streak\\": "src"
     }
   },
   "extra": {
