@@ -1,6 +1,7 @@
 <?php
-
 namespace Xvize\Streak;
+
+use Xvize\Streak\StreakFunctions;
 
 /**
  * Streak
@@ -8,6 +9,7 @@ namespace Xvize\Streak;
  */
 class Streak
 {
+    use StreakFunctions;
 
     public function boot()
     {
