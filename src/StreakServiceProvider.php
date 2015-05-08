@@ -21,8 +21,6 @@ class StreakServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/config/streak.php' => config_path('streak.php'),
         ]);
-
-        AliasLoader::getInstance()->alias('Streak', 'Xvize\Streak\Streak');
     }
 
     /**
@@ -33,11 +31,11 @@ class StreakServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('streak_api', function ($app) {
-            return new Streak($app['config']['streak']['api_key']);
+            return new Streak($app['config']['streak']['key'], $app['config']['streak']['url']);
         });
 
         $this->app->bind('Xvize\Streak\Streak', function ($app) {
-            return new Streak($app['config']['streak']['api_key']);
+            return new Streak($app['config']['streak']['key'], $app['config']['streak']['url']);
         });
     }
     /**

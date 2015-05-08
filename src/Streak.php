@@ -11,7 +11,8 @@
 
 namespace Xvize\Streak;
 
-use Xvize\Streak\StreakFunctions;
+use Xvize\Streak\Traits\StreakBoxTrait;
+use Xvize\Streak\Streak\StreakCurl;
 
 /**
  * Streak
@@ -19,12 +20,22 @@ use Xvize\Streak\StreakFunctions;
  */
 class Streak
 {
-    use StreakFunctions;
+    use StreakBoxTrait;
 
-    protected $apikey;
+    private $apikey;
 
-    function __construct($apikey)
+    function __construct($apikey, $baseurl)
     {
         $this->apikey = $apikey;
+        $this->baseurl = $baseurl;
     }
+
+    private function getURL($urlSegment){
+        return $this->url.$urlSegment;
+    }
+
+    private function curl($urlSegment){
+        return new StreakCurl($this->getUrl($urlSegment), $this->apikey);
+    }
+
 }

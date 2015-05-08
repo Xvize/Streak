@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'api_key' => 'streak_api_key'
+    'key' => 'streak_api_key',
+    'url' => 'https://www.streak.com/api/v1/'
 ];

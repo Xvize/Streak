@@ -1,25 +1,25 @@
 <?php
-namespace Xvize\Streak\Streak;
-
-use Jyggen\Curl;
-
-class StreakBox
-{
-
-    public function get()
-    {
-
-    }
-
-    public function add()
-    {
-
-    }
-
-    public function remove()
-    {
-
-    }
-
-
-}
+//namespace Xvize\Streak\Streak;
+//use Xvize\Streak\Streak\Curl;
+//
+//class StreakBox extends Curl
+//{
+//
+//    public function create()
+//    {
+//
+//    }
+//
+//    public function get()
+//    {
+//
+//        return $this->
+//    }
+//
+//    public function remove()
+//    {
+//
+//    }
+//
+//
+//}
