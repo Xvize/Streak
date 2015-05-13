@@ -12,7 +12,13 @@
 namespace Xvize\Streak;
 
 use Xvize\Streak\Traits\StreakBoxTrait;
+use Xvize\Streak\Traits\StreakEmailFilterTrait;
+use Xvize\Streak\Traits\StreakPipelineTrait;
+use Xvize\Streak\Traits\StreakSearchTrait;
+use Xvize\Streak\Traits\StreakStageTrait;
+
 use Xvize\Streak\Streak\StreakCurl;
+
 
 /**
  * Streak
@@ -20,7 +26,8 @@ use Xvize\Streak\Streak\StreakCurl;
  */
 class Streak
 {
-    use StreakBoxTrait;
+    use StreakBoxTrait, StreakSearchTrait, StreakPipelineTrait,
+        StreakEmailFilterTrait, StreakStageTrait, StreakFieldTrait;
 
     private $apikey;
 
@@ -31,7 +38,7 @@ class Streak
     }
 
     private function getURL($urlSegment){
-        return $this->url.$urlSegment;
+        return $this->baseurl.$urlSegment;
     }
 
     private function curl($urlSegment){

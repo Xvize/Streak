@@ -1,7 +1,8 @@
 <?php
 namespace Xvize\Streak\Streak;
 
-use Jyggen\Curl;
+use Jyggen\Curl\Curl;
+use Jyggen\Curl\Request;
 
 /**
  * StreakCurl
@@ -16,33 +17,46 @@ class StreakCurl
         $this->request->setOption(CURLOPT_USERPWD, $key);
     }
 
-    private function update($data){
+    public function update($data)
+    {
+        $this->request->setOption(CURLOPT_CUSTOMREQUEST, 'POST');
+        $this->request->setOption(CURLOPT_POSTFIELDS, $data);
+
+        return $this->executeRequest();
+    }
+
+
+    public function create($data){
 
         $this->request->setOption(CURLOPT_CUSTOMREQUEST, 'PUT');
         $this->request->setOption(CURLOPT_POSTFIELDS, http_build_query($data));
 
-        $this->request->execute();
-
-        return $this->request;
-
+        return $this->executeRequest();
     }
 
-    private function create(){
-
-
-    }
-
-    private function get(){
+    public function get($data = []){
 
         $this->request->setOption(CURLOPT_CUSTOMREQUEST, 'GET');
+        $this->request->setOption(CURLOPT_POSTFIELDS, http_build_query($data));
 
-        return $this->request;
-
+        return $this->executeRequest();
     }
 
-    private function delete(){
+    public function delete(){
 
+        $this->request->setOption(CURLOPT_CUSTOMREQUEST, 'DELETE');
+        return $this->executeRequest();
+    }
 
+    private function executeRequest(){
+
+        $this->request->execute();
+
+        if($this->request->isSuccessful()){
+            return $this->request->getResponse()->getContent();
+        }
+
+        return new Exception($this->request->getErrorMessage());
     }
 
 }
