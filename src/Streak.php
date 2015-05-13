@@ -16,6 +16,7 @@ use Xvize\Streak\Traits\StreakEmailFilterTrait;
 use Xvize\Streak\Traits\StreakPipelineTrait;
 use Xvize\Streak\Traits\StreakSearchTrait;
 use Xvize\Streak\Traits\StreakStageTrait;
+use Xvize\Streak\Traits\StreakFieldTrait;
 
 use Xvize\Streak\Streak\StreakCurl;
 
